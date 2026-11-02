@@ -1,0 +1,281 @@
+{
+  "metadata": {
+    "generated_at": "2026-10-27T18:15:48.439735",
+    "source": "H:\\Linkedin dev\\Dados\\Descompilado"
+  },
+  "ssi_result": {
+    "total_score": 47.02,
+    "industry_percentile": "Top 25% no seu setor",
+    "network_percentile": "Top 30% na sua rede",
+    "pillars": {
+      "pillar_1": {
+        "pillar_id": 1,
+        "name": "Estabelecer sua marca profissional",
+        "name_en": "Establish your professional brand",
+        "score": 14.72,
+        "max_score": 25.0,
+        "percentage": 58.9,
+        "level": "Moderado",
+        "color": "#E7A33E",
+        "submetrics": [
+          {
+            "name": "Completude do Perfil (All-Star)",
+            "score": 9.5,
+            "max_score": 10.0,
+            "raw_value": "8 cargos (8 com descr.), resumo (2462 carac.), 2 formações",
+            "unit": "pts",
+            "description": "Presença de título com palavras-chave, resumo extenso, experiências detalhadas, projetos e formação."
+          },
+          {
+            "name": "Credibilidade e Recomendações",
+            "score": 3.0,
+            "max_score": 5.0,
+            "raw_value": "4 recomendações recebidas, 99 competências",
+            "unit": "pts",
+            "description": "Validação social por colegas de trabalho e conjunto de competências técnicas cadastradas."
+          },
+          {
+            "name": "Publicações no Feed (Últimos 90 dias)",
+            "score": 2.22,
+            "max_score": 10.0,
+            "raw_value": "5 posts (90d) | 15 posts (ano)",
+            "unit": "posts",
+            "description": "Consistência na criação e compartilhamento de conteúdo profissional no feed nos últimos 90 dias."
+          }
+        ]
+      },
+      "pillar_2": {
+        "pillar_id": 2,
+        "name": "Localizar as pessoas certas",
+        "name_en": "Find the right people",
+        "score": 6.1,
+        "max_score": 25.0,
+        "percentage": 24.4,
+        "level": "Precisa de Atenção",
+        "color": "#2E7D32",
+        "submetrics": [
+          {
+            "name": "Pesquisas na Plataforma (90 dias)",
+            "score": 3.2,
+            "max_score": 12.0,
+            "raw_value": "327 buscas (90d) | 2.810 total",
+            "unit": "buscas",
+            "description": "Frequência de buscas por nomes, empresas e cargos. O LinkedIn desconta buscas sem uso de filtros avançados."
+          },
+          {
+            "name": "Envio de Convites (Prospecção Ativa)",
+            "score": 2.2,
+            "max_score": 9.0,
+            "raw_value": "474 enviados (90d) | 2.000 total",
+            "unit": "convites",
+            "description": "Iniciativa de prospecção conectando-se a novos perfis. Sem aceitação alta proporcional, a pontuação satura."
+          },
+          {
+            "name": "Monitoramento de Empresas e Setores",
+            "score": 0.7,
+            "max_score": 0.7,
+            "raw_value": "299 empresas acompanhadas",
+            "unit": "páginas",
+            "description": "Acompanhamento contínuo de atualizações e novas lideranças em empresas-alvo."
+          }
+        ]
+      },
+      "pillar_3": {
+        "pillar_id": 3,
+        "name": "Engajar com insights",
+        "name_en": "Engage with insights",
+        "score": 9.5,
+        "max_score": 25.0,
+        "percentage": 38.0,
+        "level": "Precisa de Atenção",
+        "color": "#0A66C2",
+        "submetrics": [
+          {
+            "name": "Reações a Conteúdos no Feed (90 dias)",
+            "score": 2.8,
+            "max_score": 8.0,
+            "raw_value": "70 reações (90d) | 15 (30d)",
+            "unit": "reações",
+            "description": "Curtidas e apoios distribuídos no feed. Curtidas têm menor peso que comentários no algoritmo."
+          },
+          {
+            "name": "Comentários e Debates no Feed (90 dias)",
+            "score": 5.2,
+            "max_score": 12.0,
+            "raw_value": "19 comentários (90d) | 5 (30d)",
+            "unit": "comentários",
+            "description": "Comentários em posts de outros profissionais. Cada comentário agrega ~7x mais valor que uma reação."
+          },
+          {
+            "name": "Participação em Enquetes e Reposts",
+            "score": 1.5,
+            "max_score": 5.0,
+            "raw_value": "41 votos em enquetes | 5 compartilhamentos",
+            "unit": "ações",
+            "description": "Participação ativa em votações e disseminação de pesquisas na plataforma."
+          }
+        ]
+      },
+      "pillar_4": {
+        "pillar_id": 4,
+        "name": "Criar relacionamentos",
+        "name_en": "Build relationships",
+        "score": 16.7,
+        "max_score": 25.0,
+        "percentage": 66.8,
+        "level": "Bom",
+        "color": "#6A1B9A",
+        "submetrics": [
+          {
+            "name": "Volume da Rede de Conexões",
+            "score": 8.5,
+            "max_score": 10.0,
+            "raw_value": "9.280 conexões (+545 em 90d)",
+            "unit": "conexões",
+            "description": "Tamanho total da sua rede de primeiro grau (comunidade de mais de 500 conexões)."
+          },
+          {
+            "name": "Relevância da Rede (Tomadores de Decisão)",
+            "score": 4.2,
+            "max_score": 7.0,
+            "raw_value": "1.646 decisores (18.28%)",
+            "unit": "líderes",
+            "description": "Presença de líderes, diretores, gerentes, fundadores e executivos C-level na sua rede."
+          },
+          {
+            "name": "Diálogos por Mensagem Privada (90 dias)",
+            "score": 4.0,
+            "max_score": 8.0,
+            "raw_value": "90 conversas ativas (190 msgs em 90d)",
+            "unit": "conversas",
+            "description": "Manutenção de conversas bidirecionais ativas no chat privado do LinkedIn."
+          }
+        ]
+      }
+    },
+    "metrics_summary": {
+      "reference_date": "2026-10-26T16:42:43+00:00",
+      "first_name": "Vitor",
+      "last_name": "Vidotto",
+      "headline": "Engenheiro de Dados | Analytics Engineer | Databricks, PySpark, SQL, Python | Lakehouse & Automações",
+      "summary_length": 2462,
+      "positions_count": 8,
+      "positions_with_description": 8,
+      "education_count": 2,
+      "skills_count": 99,
+      "certifications_count": 5,
+      "projects_count": 4,
+      "recommendations_received": 4,
+      "recommendations_given": 5,
+      "endorsements_received": 22,
+      "rich_media_count": 80,
+      "shares_30d": 1,
+      "shares_90d": 5,
+      "shares_365d": 15,
+      "shares_total": 32,
+      "search_queries_30d": 82,
+      "search_queries_90d": 327,
+      "search_queries_365d": 2652,
+      "search_queries_total": 2810,
+      "invitations_sent_30d": 55,
+      "invitations_sent_90d": 474,
+      "invitations_sent_total": 2000,
+      "invitations_received_30d": 23,
+      "invitations_received_90d": 83,
+      "invitations_received_total": 145,
+      "company_follows_count": 299,
+      "member_follows_count": 204,
+      "reactions_30d": 15,
+      "reactions_90d": 70,
+      "reactions_365d": 206,
+      "reactions_total": 536,
+      "reactions_types": {
+        "LIKE": 432,
+        "PRAISE": 46,
+        "EMPATHY": 27,
+        "APPRECIATION": 22,
+        "ENTERTAINMENT": 6,
+        "INTEREST": 3
+      },
+      "comments_30d": 5,
+      "comments_90d": 19,
+      "comments_365d": 27,
+      "comments_total": 42,
+      "votes_total": 41,
+      "connections_total": 9280,
+      "connections_new_30d": 80,
+      "connections_new_90d": 545,
+      "connections_new_365d": 4804,
+      "decision_maker_count": 1646,
+      "decision_maker_ratio": 18.28,
+      "messages_total": 453,
+      "messages_30d": 77,
+      "messages_90d": 190,
+      "message_threads_90d": 90,
+      "message_threads_total": 233
+    }
+  },
+  "diagnostic_report": {
+    "headline_diagnostic": "Índice SSI atual em 47.0/100. Sua base é sólida, mas há um enorme potencial de crescimento aumentando a cadência semanal de interações e postagens.",
+    "strengths": [
+      "Rede de Alto Alcance: 9.280 conexões diretas (muito acima do teto de 500 conexões do LinkedIn)."
+    ],
+    "bottlenecks": [
+      "Marca Profissional (14.7/25): Falta de consistência em publicações de conteúdo próprio no feed.",
+      "Localizar Pessoas Certas (6.1/25): Oportunidade de refinar filtros de pesquisa para decisores.",
+      "Interação e Insights (9.5/25): Menor frequência de comentários e debates no feed."
+    ],
+    "actions": [
+      {
+        "pillar_id": 1,
+        "pillar_name": "Estabelecer sua marca profissional",
+        "priority": "Alta",
+        "title": "Cadência de Publicações Autorais (2x por semana)",
+        "impact_estimate": "+4 a +6 pontos no Pilar 1",
+        "rationale": "Você publicou 5 posts nos últimos 90 dias (~1 post a cada 18 dias). O LinkedIn valoriza constância semanal.",
+        "how_to_do": "Compartilhe aprendizados semanais sobre seus projetos de Engenharia de Dados/IA, cases técnicos ou lições aprendidas."
+      },
+      {
+        "pillar_id": 3,
+        "pillar_name": "Engajar com insights",
+        "priority": "Alta",
+        "title": "Comentários Construtivos em Posts Estratégicos (3x por semana)",
+        "impact_estimate": "+5 a +8 pontos no Pilar 3",
+        "rationale": "Você fez 19 comentários em 90 dias (5 no último mês). No algoritmo do LinkedIn, comentários valem até 5x mais do que curtidas simples.",
+        "how_to_do": "Reserve 10 minutos diários para comentar com valor agregado em posts de líderes e colegas da área de dados."
+      },
+      {
+        "pillar_id": 3,
+        "pillar_name": "Engajar com insights",
+        "priority": "Baixa",
+        "title": "Aumentar Reações Diversificadas",
+        "impact_estimate": "+2 a +3 pontos no Pilar 3",
+        "rationale": "Você reagiu 70 vezes em 90 dias. Use reações mais expressivas além de 'LIKE' (como 'APOIO', 'GENIAL', 'PARABÉNS').",
+        "how_to_do": "Interaja com os posts do feed distribuindo reações contextualizadas para movimentar sua presença na rede."
+      },
+      {
+        "pillar_id": 4,
+        "pillar_name": "Criar relacionamentos",
+        "priority": "Média",
+        "title": "Conectar com Líderes e Tomadores de Decisão",
+        "impact_estimate": "+3 a +4 pontos no Pilar 4",
+        "rationale": "Atualmente, 18.28% das suas conexões têm cargos como Diretor, VP, Gerente ou Head. Elevar para >20% melhora o perfil relacional.",
+        "how_to_do": "Pesquise por 'Head of Data', 'Data Director', 'CTO' e conecte-se com foco em trocar ideias sobre desafios da indústria."
+      }
+    ],
+    "simulations": [
+      {
+        "scenario": "Cenário Consistência (+2 posts/mês, +3 comentários/semana)",
+        "estimated_gain": "+8 a +12 pontos",
+        "projected_ssi": "57.0",
+        "main_impact": "Pilares 1 e 3"
+      },
+      {
+        "scenario": "Cenário Aceleração (+1 post autoral/semana, +5 comentários/semana, +10 conversas DM/mês)",
+        "estimated_gain": "+15 a +22 pontos",
+        "projected_ssi": "65.0",
+        "main_impact": "Todos os 4 pilares"
+      }
+    ]
+  }
+}

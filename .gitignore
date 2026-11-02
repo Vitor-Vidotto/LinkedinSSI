@@ -1,0 +1,21 @@
+# LinkedIn Data Exports (Private User Data)
+Dados/
+dados/
+data/
+Descompilado/
+*.zip
+
+# Python Bytecode & Environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.env
+
+# OS & Editor Artifacts
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
