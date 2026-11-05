@@ -26,6 +26,7 @@ from src.parser import LinkedInDataParser
 from src.metrics import MetricsExtractor
 from src.ssi_engine import SSIEngine, SSIResult
 from src.recommendations import RecommendationsGenerator, DiagnosticReport
+from src.report_generator import generate_html_report
 
 try:
     from rich.console import Console
@@ -264,12 +265,27 @@ def main():
         help="Salva todo o diagnóstico e métricas em um arquivo JSON estruturado."
     )
     parser.add_argument(
+        "--export-html",
+        metavar="ARQUIVO.html",
+        help="Gera e salva o relatório visual completo em página HTML (imprimível em PDF)."
+    )
+    parser.add_argument(
+        "--gui",
+        action="store_true",
+        help="Inicia a interface gráfica visual interativa."
+    )
+    parser.add_argument(
         "--no-rich",
         action="store_true",
         help="Desativa a formatação colorida do Rich e imprime em texto padrão."
     )
 
     args = parser.parse_args()
+
+    if args.gui:
+        from app_gui import main as run_gui
+        run_gui()
+        return
 
     # Determina o caminho da fonte de dados
     source_path = args.source
@@ -313,6 +329,15 @@ def main():
         print_rich_report(console, result, report, verbose=args.verbose)
     else:
         print_plain_report(result, report, verbose=args.verbose)
+
+    # Exportação HTML
+    if args.export_html:
+        html_out_path = generate_html_report(result, report, args.export_html)
+        msg_html = f"\n📄 Relatório HTML gerado com sucesso em: {html_out_path}"
+        if console:
+            console.print(f"[bold green]{msg_html}[/bold green]")
+        else:
+            print(msg_html)
 
     # Exportação JSON
     if args.export_json:

@@ -35,7 +35,33 @@ Install the required dependencies:
 pip install -r requirements.txt
 ```
 
-### Running the Calculator
+### Running the Desktop GUI (Visual Interface)
+
+You can launch the interactive graphical application with folder & file pickers, real-time calculations, and one-click HTML report generation:
+
+```bash
+# Launch directly via Python
+python app_gui.py
+
+# Or launch via the CLI
+python cli.py --gui
+```
+
+#### 📦 Standalone Executable (.EXE for Windows)
+A standalone Windows `.exe` is located at:
+```text
+dist/LinkedIn_SSI_Calculator.exe
+```
+This executable is **100% portable** and can be sent to colleagues or clients without requiring Python to be installed. They simply double-click it, select their extracted LinkedIn export folder (or `.zip` file), and view/export their SSI scores and HTML reports.
+
+To rebuild the `.exe` at any time:
+```bash
+pyinstaller --noconfirm --onefile --windowed --name "LinkedIn_SSI_Calculator" --icon "app_icon.ico" --add-data "src;src" --add-data "app_icon.ico;." --collect-data customtkinter app_gui.py
+```
+
+---
+
+### Running via Command Line (CLI)
 
 You can pass either the raw `.zip` file or an extracted folder path to `cli.py`:
 
@@ -48,6 +74,9 @@ python cli.py "path/to/extracted_folder"
 
 # Auto-detect data folder or .zip file in ./Dados, ./data, or current directory
 python cli.py
+
+# Generate and export the complete visual HTML report (viewable in any browser / printable to PDF)
+python cli.py "path/to/extracted_folder" --export-html relatorio_ssi.html
 
 # Verbose mode: display full submetric breakdown, raw extracted values, and algorithm explanations
 python cli.py "path/to/Complete_LinkedInDataExport.zip" -v
@@ -64,6 +93,8 @@ python cli.py "path/to/Complete_LinkedInDataExport.zip" --no-rich
 | Argument | Description |
 | :--- | :--- |
 | `source` *(optional)* | Path to the extracted LinkedIn data directory or `.zip` archive. If omitted, `cli.py` searches `Dados/Descompilado`, `Descompilado`, `data`, `dados`, and `.zip` files in `./Dados` or `.`. |
+| `--gui` | Launches the modern graphical desktop interface (`app_gui.py`). |
+| `--export-html <FILE>` | Generates a standalone, responsive, modern visual HTML report (printable as PDF with Ctrl+P). |
 | `-v`, `--verbose` | Prints a detailed table of every submetric, its score vs. maximum cap, raw extracted counts, and scoring rationale. |
 | `--export-json <FILE>` | Exports metadata, pillar scores, raw metrics, and strategic recommendations to a structured `.json` file. |
 | `--no-rich` | Forces standard ASCII output instead of `Rich` terminal panels and tables. |
@@ -79,9 +110,12 @@ LinkedinSSI/
 │   ├── parser.py            # Resilient ZIP & folder CSV reader, indexer, and sanitizer
 │   ├── metrics.py           # Feature extractor: rolling windows (30d/90d/365d), profile & seniority
 │   ├── ssi_engine.py        # Calibrated mathematical engine for the 4 SSI pillars (0–100)
-│   └── recommendations.py   # Diagnostic engine, prioritized action items, and growth simulations
-├── cli.py                   # Command-line interface, Rich report renderer, and JSON exporter
-├── requirements.txt         # Python dependencies (pandas, rich, python-dateutil)
+│   ├── recommendations.py   # Diagnostic engine, prioritized action items, and growth simulations
+│   └── report_generator.py  # Standalone visual HTML & PDF-printable report generator
+├── app_gui.py               # Modern desktop GUI application (CustomTkinter)
+├── cli.py                   # Command-line interface, Rich report renderer, and exporters
+├── app_icon.ico             # Application icon
+├── requirements.txt         # Python dependencies (customtkinter, pandas, rich, etc.)
 └── README.md                # Project documentation
 ```
 
