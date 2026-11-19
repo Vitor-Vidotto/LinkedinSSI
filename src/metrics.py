@@ -7,6 +7,7 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone, timedelta
 from typing import Dict, Any, Optional
 import pandas as pd
+import dateutil.parser
 from .parser import LinkedInDataParser
 
 DECISION_MAKER_KEYWORDS = [
@@ -100,6 +101,72 @@ class MetricsExtractor:
             return pd.Series(dtype="datetime64[ns, UTC]")
         return pd.to_datetime(series, errors="coerce", utc=True, format="mixed")
 
+    def _parse_rich_media_posts(self, rich_media_df: pd.DataFrame) -> pd.Series:
+        """
+        Extrai timestamps de postagens do feed presentes no Rich_Media.csv.
+        Deduplica múltiplos itens de mídia enviados no mesmo post (álbum/carrossel)
+        e ignora uploads que não são do feed (ex: foto de perfil ou capa).
+        """
+        if rich_media_df.empty:
+            return pd.Series(dtype="datetime64[ns, UTC]")
+
+        col = None
+        for c in rich_media_df.columns:
+            if "date" in c.lower() or "time" in c.lower():
+                col = c
+                break
+        if not col:
+            return pd.Series(dtype="datetime64[ns, UTC]")
+
+        # Filtra apenas postagens do feed (exclui fotos de perfil, plano de fundo, avatar, etc.)
+        is_feed = rich_media_df[col].astype(str).str.contains("feed", case=False, na=False)
+        if not is_feed.any():
+            is_feed = ~rich_media_df[col].astype(str).str.contains("profile|avatar|background|cover|perfil|capa", case=False, na=False)
+
+        feed_df = rich_media_df[is_feed]
+        if feed_df.empty:
+            return pd.Series(dtype="datetime64[ns, UTC]")
+
+        post_dates = []
+        for dt_raw in feed_df[col].unique():
+            try:
+                dt = dateutil.parser.parse(str(dt_raw), fuzzy=True)
+                ts = pd.Timestamp(dt)
+                ts_utc = ts.tz_convert("UTC") if ts.tzinfo else ts.tz_localize("UTC")
+                post_dates.append(ts_utc)
+            except Exception:
+                pass
+
+        if not post_dates:
+            return pd.Series(dtype="datetime64[ns, UTC]")
+
+        return pd.Series(post_dates, dtype="datetime64[ns, UTC]").dropna()
+
+    def _consolidate_post_dates(self, shares_dt: pd.Series, rich_media_posts_dt: pd.Series) -> pd.Series:
+        """
+        Consolida as datas de postagens do Shares.csv e Rich_Media.csv.
+        Aplica janela de tolerância de 2 horas (7200s) para evitar contagem dupla
+        quando um mesmo post tiver registro em ambos os arquivos.
+        """
+        shares_list = list(shares_dt.dropna()) if not shares_dt.empty else []
+        rm_list = list(rich_media_posts_dt.dropna()) if not rich_media_posts_dt.empty else []
+
+        combined = list(shares_list)
+        for rmd in rm_list:
+            is_duplicate = False
+            for sd in shares_list:
+                if abs((rmd - sd).total_seconds()) <= 7200:
+                    is_duplicate = True
+                    break
+            if not is_duplicate:
+                combined.append(rmd)
+
+        if not combined:
+            return pd.Series(dtype="datetime64[ns, UTC]")
+
+        combined.sort(reverse=True)
+        return pd.Series(combined, dtype="datetime64[ns, UTC]")
+
     def extract(self) -> LinkedInMetrics:
         """Processa todos os CSVs e retorna um objeto LinkedInMetrics consolidado."""
         # 1. Carrega os DataFrames necessários
@@ -127,6 +194,9 @@ class MetricsExtractor:
 
         # 2. Parse de datas dos eventos dinâmicos
         shares_dt = self._parse_dates(shares_df["Date"]) if not shares_df.empty and "Date" in shares_df.columns else pd.Series(dtype="datetime64[ns, UTC]")
+        rich_media_posts_dt = self._parse_rich_media_posts(rich_media_df)
+        consolidated_shares_dt = self._consolidate_post_dates(shares_dt, rich_media_posts_dt)
+
         reactions_dt = self._parse_dates(reactions_df["Date"]) if not reactions_df.empty and "Date" in reactions_df.columns else pd.Series(dtype="datetime64[ns, UTC]")
         comments_dt = self._parse_dates(comments_df["Date"]) if not comments_df.empty and "Date" in comments_df.columns else pd.Series(dtype="datetime64[ns, UTC]")
         search_dt = self._parse_dates(search_df["Time"]) if not search_df.empty and "Time" in search_df.columns else pd.Series(dtype="datetime64[ns, UTC]")
@@ -137,7 +207,7 @@ class MetricsExtractor:
         # 3. Determinação da Data de Referência (data máxima observada na exportação ou data informada)
         if self.reference_date is None:
             candidate_dates = []
-            for dt_series in [shares_dt, reactions_dt, comments_dt, search_dt, invites_dt, messages_dt, connections_dt]:
+            for dt_series in [consolidated_shares_dt, reactions_dt, comments_dt, search_dt, invites_dt, messages_dt, connections_dt]:
                 if not dt_series.empty:
                     valid_dts = dt_series.dropna()
                     if not valid_dts.empty:
@@ -180,10 +250,10 @@ class MetricsExtractor:
         endorse_rec = len(endorse_rec_df) if not endorse_rec_df.empty else 0
         rich_media = len(rich_media_df) if not rich_media_df.empty else 0
 
-        shares_30d = int((shares_dt >= d30).sum()) if not shares_dt.empty else 0
-        shares_90d = int((shares_dt >= d90).sum()) if not shares_dt.empty else 0
-        shares_365d = int((shares_dt >= d365).sum()) if not shares_dt.empty else 0
-        shares_total = len(shares_df) if not shares_df.empty else 0
+        shares_30d = int((consolidated_shares_dt >= d30).sum()) if not consolidated_shares_dt.empty else 0
+        shares_90d = int((consolidated_shares_dt >= d90).sum()) if not consolidated_shares_dt.empty else 0
+        shares_365d = int((consolidated_shares_dt >= d365).sum()) if not consolidated_shares_dt.empty else 0
+        shares_total = len(consolidated_shares_dt) if not consolidated_shares_dt.empty else 0
 
         # 5. Extração P2: Buscas e Convites
         sq_30d = int((search_dt >= d30).sum()) if not search_dt.empty else 0

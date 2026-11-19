@@ -93,8 +93,8 @@ python cli.py "path/to/Complete_LinkedInDataExport.zip" --no-rich
 | Argument | Description |
 | :--- | :--- |
 | `source` *(optional)* | Path to the extracted LinkedIn data directory or `.zip` archive. If omitted, `cli.py` searches `Dados/Descompilado`, `Descompilado`, `data`, `dados`, and `.zip` files in `./Dados` or `.`. |
-| `--gui` | Launches the modern graphical desktop interface (`app_gui.py`). |
-| `--export-html <FILE>` | Generates a standalone, responsive, modern visual HTML report (printable as PDF with Ctrl+P). |
+| `--gui` | Launches the modern graphical desktop interface
+, modern visual HTML report (printable as PDF with Ctrl+P). |
 | `-v`, `--verbose` | Prints a detailed table of every submetric, its score vs. maximum cap, raw extracted counts, and scoring rationale. |
 | `--export-json <FILE>` | Exports metadata, pillar scores, raw metrics, and strategic recommendations to a structured `.json` file. |
 | `--no-rich` | Forces standard ASCII output instead of `Rich` terminal panels and tables. |

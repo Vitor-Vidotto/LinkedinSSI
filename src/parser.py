@@ -49,6 +49,11 @@ class LinkedInDataParser:
                 self.is_zip = True
                 self._zip_ref = zipfile.ZipFile(self.source, "r")
                 self._index_zip_files()
+            elif os.path.isfile(self.source) and self.source.lower().endswith(".csv"):
+                self.is_zip = False
+                self._dir_path = os.path.dirname(os.path.abspath(self.source))
+                base_name = os.path.basename(self.source).lower()
+                self._file_index[base_name] = os.path.abspath(self.source)
             else:
                 raise ValueError(f"Fonte inválida ou inexistente: {self.source}")
         else:
