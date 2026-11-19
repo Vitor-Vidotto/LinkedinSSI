@@ -25,3 +25,6 @@ build/
 dist/
 *.spec
 
+# User Output Reports
+relatorio_ssi*.html
+

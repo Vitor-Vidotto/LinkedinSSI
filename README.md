@@ -212,8 +212,8 @@ Each pillar is classified according to its score out of 25:
 - **0.0 – 9.99:** Needs Attention
 
 Estimated ranking tiers based on Total SSI (`0–100`):
-- **Industry Rank:** `≥ 80` Top 1% | `≥ 70` Top 5% | `≥ 60` Top 10% | `≥ 45` Top 25% | `< 45` Top 50%
-- **Network Rank:** `≥ 70` Top 5% | `≥ 50` Top 15% | `≥ 40` Top 30% | `< 40` Top 50%
+- **Industry Rank:** `≥ 75` Top 1% | `≥ 65` Top 3% | `≥ 55` Top 7% | `≥ 46` Top 12%–15% | `≥ 40` Top 20% | `≥ 32` Top 30% | `< 32` Top 50%
+- **Network Rank:** `≥ 75` Top 1% | `≥ 65` Top 3% | `≥ 55` Top 5% | `≥ 46` Top 8%–10% | `≥ 40` Top 15% | `≥ 32` Top 25% | `< 32` Top 50%
 
 ---
 
@@ -227,7 +227,7 @@ The scoring engine was calibrated directly against an official **LinkedIn Sales 
 | **Pillar 2** | Find the right people | **6.10** / 25.00 | 24.4% |
 | **Pillar 3** | Engage with insights | **9.50** / 25.00 | 38.0% |
 | **Pillar 4** | Build relationships | **16.70** / 25.00 | 66.8% |
-| **TOTAL** | **Consolidated Social Selling Index** | **47.02** / 100.00 | **Top 25%** |
+| **TOTAL** | **Consolidated Social Selling Index** | **47.02** / 100.00 | **Top 8%–10% (Network)** |
 
 ---
 

@@ -81,25 +81,35 @@ class SSIResult:
 
     @property
     def industry_percentile(self) -> str:
-        if self.total_score >= 80:
+        if self.total_score >= 75:
             return "Top 1% no seu setor"
-        elif self.total_score >= 70:
-            return "Top 5% no seu setor"
-        elif self.total_score >= 60:
-            return "Top 10% no seu setor"
-        elif self.total_score >= 45:
-            return "Top 25% no seu setor"
+        elif self.total_score >= 65:
+            return "Top 3% no seu setor"
+        elif self.total_score >= 55:
+            return "Top 7% no seu setor"
+        elif self.total_score >= 46:
+            return "Top 12% a 15% no seu setor"
+        elif self.total_score >= 40:
+            return "Top 20% no seu setor"
+        elif self.total_score >= 32:
+            return "Top 30% no seu setor"
         else:
             return "Top 50% no seu setor"
 
     @property
     def network_percentile(self) -> str:
-        if self.total_score >= 70:
+        if self.total_score >= 75:
+            return "Top 1% na sua rede"
+        elif self.total_score >= 65:
+            return "Top 3% na sua rede"
+        elif self.total_score >= 55:
             return "Top 5% na sua rede"
-        elif self.total_score >= 50:
-            return "Top 15% na sua rede"
+        elif self.total_score >= 46:
+            return "Top 8% a 10% na sua rede"
         elif self.total_score >= 40:
-            return "Top 30% na sua rede"
+            return "Top 15% na sua rede"
+        elif self.total_score >= 32:
+            return "Top 25% na sua rede"
         else:
             return "Top 50% na sua rede"
 
